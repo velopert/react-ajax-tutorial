@@ -8,11 +8,15 @@ class PostContainer extends Component {
     componentDidMount() {
         this.fetchPostInfo(1);
     }
+
+
     fetchPostInfo = async (postId) => {
-        const post = await service.getPost(postId);
-        console.log(post);
-        const comments = await service.getComments(postId);
-        console.log(comments);
+        const info = await Promise.all([
+            service.getPost(postId),
+            service.getComments(postId)
+        ]);
+        
+        console.log(info);
     }
  
     render() {
