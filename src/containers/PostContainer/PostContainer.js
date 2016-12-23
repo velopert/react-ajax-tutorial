@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { PostWrapper, Navigate } from '../../components';
+import { PostWrapper, Navigate, Post } from '../../components';
  
  
 class PostContainer extends Component {
@@ -7,6 +7,7 @@ class PostContainer extends Component {
         return (
             <PostWrapper>
                 <Navigate/>
+                <Post/>
             </PostWrapper>
         );
     }
