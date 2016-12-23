@@ -5,7 +5,7 @@ import * as service from '../../services/post';
  
 class PostContainer extends Component {
  
-    constructor(props) {
+     constructor(props) {
         super();
         // initializes component state
         this.state = {
@@ -15,7 +15,8 @@ class PostContainer extends Component {
                 title: null,
                 body: null
             },
-            comments: []
+            comments: [],
+            warningVisibility: false
         };
     }
 
@@ -23,6 +24,21 @@ class PostContainer extends Component {
         this.fetchPostInfo(1);
     }
     
+    showWarning = () => {
+        this.setState({
+            warningVisibility: true
+        });
+ 
+        // after 1.5 sec
+ 
+        setTimeout(
+            () => {
+                this.setState({
+                    warningVisibility: false
+                });
+            }, 1500
+        );
+    }
 
 
     fetchPostInfo = async (postId) => {
@@ -58,7 +74,7 @@ class PostContainer extends Component {
             this.setState({
                 fetching: false
             });
-            console.log('error occurred', e);
+            this.showWarning();
         }
     }
 
@@ -74,7 +90,7 @@ class PostContainer extends Component {
     }
  
     render() {
-        const {postId, fetching, post, comments} = this.state;
+        const {postId, fetching, post, comments, warningVisibility} = this.state;
  
         return (
             <PostWrapper>
@@ -88,7 +104,7 @@ class PostContainer extends Component {
                     body={post.body}
                     comments={comments}
                 />
-                <Warning message="That post does not exist"/>
+                <Warning visible={warningVisibility} message="That post does not exist"/>
             </PostWrapper>
         );
     }
