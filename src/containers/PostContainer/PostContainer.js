@@ -100,6 +100,7 @@ class PostContainer extends Component {
                     onClick={this.handleNavigateClick}
                 />
                 <Post
+                    postId={postId}
                     title={post.title}
                     body={post.body}
                     comments={comments}
