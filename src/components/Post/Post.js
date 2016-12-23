@@ -1,5 +1,6 @@
 import React from 'react';
 import './Post.css';
+import { CommentList } from '../';
  
 const Post = () => (
     <div className="Post">
@@ -7,6 +8,7 @@ const Post = () => (
         <p>
             Body
         </p>
+        <CommentList/>
     </div>
 );
  
