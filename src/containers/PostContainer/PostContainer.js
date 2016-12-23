@@ -54,6 +54,16 @@ class PostContainer extends Component {
         });
  
     }
+
+    handleNavigateClick = (type) => {
+        const postId = this.state.postId;
+ 
+        if(type === 'NEXT') {
+            this.fetchPostInfo(postId+1);
+        } else {
+            this.fetchPostInfo(postId-1);
+        }
+    }
  
     render() {
         const {postId, fetching, post, comments} = this.state;
