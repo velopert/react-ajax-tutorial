@@ -73,6 +73,7 @@ class PostContainer extends Component {
                 <Navigate 
                     postId={postId}
                     disabled={fetching}
+                    onClick={this.handleNavigateClick}
                 />
                 <Post
                     title={post.title}
